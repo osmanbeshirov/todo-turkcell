@@ -2,15 +2,12 @@ import React, { useContext } from 'react'
 import { useFormik } from 'formik';
 import { Values } from './validation';
 import validations from './validation';
-import TodoContext from '../../Context/TodoContext';
+import TodoContext, { useTodo } from '../../Context/TodoContext';
 
 
 
 const Form = () => {
-
-  
-
-
+    const { addToList } = useTodo();
 
     const { handleChange, handleSubmit, handleBlur,
         values, isSubmitting, errors, touched } = useFormik<Values>({
@@ -20,7 +17,7 @@ const Form = () => {
             validationSchema: validations
             ,
             onSubmit: (values, bag) => {
-                
+                addToList(values.todo)
                 // console.log(values.todo);
 
                 bag.resetForm();

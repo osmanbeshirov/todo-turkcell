@@ -1,5 +1,7 @@
 import { Children, createContext, useContext, useState } from 'react';
+import { Todo } from '../Content/List';
 
+import { v4 as uuidv4 } from "uuid"
 
 interface Props {
     children: React.ReactNode;
@@ -9,15 +11,17 @@ const TodoContext = createContext<any>(null);
 
 export const TodoContextProvider: React.FC<Props> = ({ children }) => {
 
-    const [todos, setTodos] = useState([{
-        id: 1,
-        text: 'Learn Osman',
-        completed: true
-    }])
+    const [todos, setTodos] = useState([
+        {
+            id: 'shu1u2123',
+            text: 'osman',
+            completed: false
+        }
+    ])
 
 
     const addToList = (todo: string) => {
-        // setTodos(todo);
+        setTodos([...todos, { id: uuidv4(), text: todo, completed: false }]);
     }
 
     const values = {
