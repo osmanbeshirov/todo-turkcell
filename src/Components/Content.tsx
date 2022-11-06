@@ -1,7 +1,12 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import ContentFooter from './ContentFooter'
+import TodoContext, { TodoContextProvider } from './Context/TodoContext'
 
 const Content = () => {
+
+    const { todo } = useContext(TodoContext);
+
+
     return (
         <>
             <section className='main'>
@@ -12,7 +17,7 @@ const Content = () => {
                     <li className='completed'>
                         <div className='view'>
                             <input className='toggle' type="checkbox" />
-                            <label>Learn JS</label>
+                            <label>{todo}</label>
                             <button className='destroy'></button>
                         </div>
                     </li>
