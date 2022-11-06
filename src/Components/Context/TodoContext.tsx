@@ -1,4 +1,4 @@
-import { Children, createContext, useState } from 'react';
+import { Children, createContext, useContext, useState } from 'react';
 
 
 interface Props {
@@ -9,19 +9,33 @@ const TodoContext = createContext<any>(null);
 
 export const TodoContextProvider: React.FC<Props> = ({ children }) => {
 
-    const [todo, setTodo] = useState('')
+    const [todos, setTodos] = useState([{
+        id: 1,
+        text: 'Learn Osman',
+        completed: false
+    }])
 
 
     const addToList = (todo: string) => {
-        setTodo(todo);
+        // setTodos(todo);
     }
 
     const values = {
-        todo,
+        todos,
         addToList
     }
 
     return <TodoContext.Provider value={values}>{children}</TodoContext.Provider>
+}
+
+export const useTodo = () => {
+    const context = useContext(TodoContext);
+
+    if (context === undefined) {
+        throw new Error("useTodo must be with in a TodoProvider");
+    }
+
+    return context;
 }
 
 export default TodoContext;

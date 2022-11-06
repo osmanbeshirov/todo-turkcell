@@ -8,7 +8,7 @@ import TodoContext from '../../Context/TodoContext';
 
 const Form = () => {
 
-    const { todo, addToList } = useContext(TodoContext)
+  
 
 
 
@@ -20,7 +20,7 @@ const Form = () => {
             validationSchema: validations
             ,
             onSubmit: (values, bag) => {
-                addToList(values.todo)
+                
                 // console.log(values.todo);
 
                 bag.resetForm();
