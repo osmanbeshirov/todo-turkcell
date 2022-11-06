@@ -18,7 +18,7 @@ const List = () => {
                 todos.map((todo: Todo) => (
                     <li key={todo.id} className={`${todo.completed ? 'completed' : null}`}>
                         <div className='view'>
-                            <input className='toggle' type="checkbox" />
+                            <input className='toggle' type="checkbox" checked={todo.completed}/>
                             <label>{todo.text}</label>
                             <button className='destroy'></button>
                         </div>

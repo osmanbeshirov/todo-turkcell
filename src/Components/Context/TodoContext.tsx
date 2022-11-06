@@ -12,7 +12,7 @@ export const TodoContextProvider: React.FC<Props> = ({ children }) => {
     const [todos, setTodos] = useState([{
         id: 1,
         text: 'Learn Osman',
-        completed: false
+        completed: true
     }])
 
 
