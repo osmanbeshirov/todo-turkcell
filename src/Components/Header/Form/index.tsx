@@ -4,6 +4,8 @@ import { Values } from './validation';
 import validations from './validation';
 import TodoContext, { useTodo } from '../../Context/TodoContext';
 
+import { v4 as uuidv4 } from "uuid"
+
 
 
 const Form = () => {
@@ -17,7 +19,8 @@ const Form = () => {
             validationSchema: validations
             ,
             onSubmit: (values, bag) => {
-                addToList(values.todo)
+                const newTodo = { id: uuidv4(), text: values.todo, completed: false }
+                addToList(newTodo)
                 // console.log(values.todo);
 
                 bag.resetForm();

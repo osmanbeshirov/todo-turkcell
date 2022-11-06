@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Todo } from '.';
+import { useTodo } from '../../Context/TodoContext';
 
 
 interface IPropsList {
@@ -8,12 +9,27 @@ interface IPropsList {
 
 const ListItem: React.FC<IPropsList> = ({ todo }) => {
 
+    const { todos, setTodos, addToList, toggleTodo } = useTodo()
+
+
+
+    const handleChecked = (id: string) => {
+        // const cloned_todos = [...todos]
+        // const cloned = cloned_todos.find((item: Todo) => item.id === todo.id);
+
+        // cloned.completed = !cloned.completed;
+
+        // setTodos(cloned_todos)
+
+        toggleTodo(id)
+
+    }
+
 
     return (
-
-        <li  className={`${todo.completed ? 'completed' : null}`}>
+        <li className={`${todo.completed ? 'completed' : null}`}>
             <div className='view'>
-                <input className='toggle' type="checkbox" checked={todo.completed} />
+                <input className='toggle' onChange={() => handleChecked(todo.id)} type="checkbox" checked={todo.completed} />
                 <label>{todo.text}</label>
                 <button className='destroy'></button>
             </div>

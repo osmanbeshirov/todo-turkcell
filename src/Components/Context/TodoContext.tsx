@@ -19,14 +19,27 @@ export const TodoContextProvider: React.FC<Props> = ({ children }) => {
         }
     ])
 
+    const addToList = (todo: Todo) => {
+        setTodos([...todos, todo]);
+    }
 
-    const addToList = (todo: string) => {
-        setTodos([...todos, { id: uuidv4(), text: todo, completed: false }]);
+    const toggleTodo = (id: string) => {
+        const cloned_todos = [...todos]
+        const cloned = cloned_todos.find((item: Todo) => item.id === id);
+
+        if (cloned != undefined) {
+            cloned.completed = !cloned.completed
+        }
+
+        setTodos(cloned_todos)
+
     }
 
     const values = {
         todos,
-        addToList
+        addToList,
+        setTodos,
+        toggleTodo
     }
 
     return <TodoContext.Provider value={values}>{children}</TodoContext.Provider>
