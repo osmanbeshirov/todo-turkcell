@@ -35,11 +35,20 @@ export const TodoContextProvider: React.FC<Props> = ({ children }) => {
 
     }
 
+    const removeTodo = (id: string) => {
+        const clone_todos = [...todos];
+
+        const newTodos = clone_todos.filter(todo => todo.id != id);
+
+        setTodos(newTodos)
+    }
+
     const values = {
         todos,
         addToList,
         setTodos,
-        toggleTodo
+        toggleTodo,
+        removeTodo
     }
 
     return <TodoContext.Provider value={values}>{children}</TodoContext.Provider>

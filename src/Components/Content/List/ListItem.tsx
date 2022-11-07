@@ -9,7 +9,7 @@ interface IPropsList {
 
 const ListItem: React.FC<IPropsList> = ({ todo }) => {
 
-    const { todos, setTodos, addToList, toggleTodo } = useTodo()
+    const { todos, setTodos, addToList, toggleTodo, removeTodo } = useTodo()
 
 
 
@@ -31,7 +31,7 @@ const ListItem: React.FC<IPropsList> = ({ todo }) => {
             <div className='view'>
                 <input className='toggle' onChange={() => handleChecked(todo.id)} type="checkbox" checked={todo.completed} />
                 <label>{todo.text}</label>
-                <button className='destroy'></button>
+                <button className='destroy' onClick={() => removeTodo(todo.id)}></button>
             </div>
         </li>
     )
