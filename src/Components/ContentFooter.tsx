@@ -1,10 +1,15 @@
 import React from 'react'
+import { useTodo } from './Context/TodoContext'
 
 const ContentFooter = () => {
+    const { todos } = useTodo();
+
+
+
     return (
         <footer className='footer'>
             <span className='todo-count'>
-                <strong>2</strong>
+                <strong>{todos.length} </strong>
                 items left
             </span>
 
