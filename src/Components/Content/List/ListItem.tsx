@@ -25,6 +25,7 @@ const ListItem: React.FC<IPropsList> = ({ todo }) => {
 
     }
 
+   
 
     return (
         <li className={`${todo.completed ? 'completed' : null}`}>

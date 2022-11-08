@@ -27,7 +27,7 @@ export const TodoContextProvider: React.FC<Props> = ({ children }) => {
         const cloned_todos = [...todos]
         const cloned = cloned_todos.find((item: Todo) => item.id === id);
 
-        if (cloned != undefined) {
+        if (cloned !== undefined) {
             cloned.completed = !cloned.completed
         }
 
@@ -38,17 +38,28 @@ export const TodoContextProvider: React.FC<Props> = ({ children }) => {
     const removeTodo = (id: string) => {
         const clone_todos = [...todos];
 
-        const newTodos = clone_todos.filter(todo => todo.id != id);
+        const newTodos = clone_todos.filter(todo => todo.id !== id);
 
         setTodos(newTodos)
     }
+
+    const filterTodos = () => {
+        const clone_todos = [...todos];
+
+        const completedTodos = clone_todos.filter(todo => todo.completed === true);
+
+        setTodos(completedTodos)
+        console.log(completedTodos)
+    }
+
 
     const values = {
         todos,
         addToList,
         setTodos,
         toggleTodo,
-        removeTodo
+        removeTodo,
+        filterTodos
     }
 
     return <TodoContext.Provider value={values}>{children}</TodoContext.Provider>

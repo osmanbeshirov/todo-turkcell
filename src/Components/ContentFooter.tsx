@@ -2,9 +2,7 @@ import React from 'react'
 import { useTodo } from './Context/TodoContext'
 
 const ContentFooter = () => {
-    const { todos } = useTodo();
-
-
+    const { todos, filterTodos } = useTodo();
 
     return (
         <footer className='footer'>
@@ -14,14 +12,14 @@ const ContentFooter = () => {
             </span>
 
             <ul className="filters">
-                <li>
+                <li >
                     <a className="selected">All</a>
                 </li>
                 <li>
                     <a>Active</a>
                 </li>
-                <li>
-                    <a>Completed</a>
+                <li onClick={() => filterTodos()}>
+                    <a >Completed</a>
                 </li>
             </ul>
 
