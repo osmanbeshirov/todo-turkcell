@@ -8,15 +8,24 @@ export type Todo = {
     completed: boolean
 }
 
+let filtered = null;
+
 const List = () => {
 
-    const { todos } = useTodo();
+    const { todos, filter } = useTodo();
+
+    filtered = todos;
+
+    if (filter !== 'all') {
+        filtered = todos.filter((todo: Todo) => filter === 'active' ? todo.completed === false
+            : todo.completed === true)
+    }
 
     return (
         <ul className='todo-list'>
 
             {
-                todos.map((todo: Todo) => (
+                filtered.map((todo: Todo) => (
                     <ListItem key={todo.id} todo={todo} />
                 ))
             }

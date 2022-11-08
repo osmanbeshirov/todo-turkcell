@@ -14,12 +14,6 @@ const ListItem: React.FC<IPropsList> = ({ todo }) => {
 
 
     const handleChecked = (id: string) => {
-        // const cloned_todos = [...todos]
-        // const cloned = cloned_todos.find((item: Todo) => item.id === todo.id);
-
-        // cloned.completed = !cloned.completed;
-
-        // setTodos(cloned_todos)
 
         toggleTodo(id)
 

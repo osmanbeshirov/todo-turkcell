@@ -11,6 +11,8 @@ const TodoContext = createContext<any>(null);
 
 export const TodoContextProvider: React.FC<Props> = ({ children }) => {
 
+    const [filter, setFilter] = useState('all')
+
     const [todos, setTodos] = useState([
         {
             id: 'shu1u2123',
@@ -43,14 +45,6 @@ export const TodoContextProvider: React.FC<Props> = ({ children }) => {
         setTodos(newTodos)
     }
 
-    const filterTodos = () => {
-        const clone_todos = [...todos];
-
-        const completedTodos = clone_todos.filter(todo => todo.completed === true);
-
-        setTodos(completedTodos)
-        console.log(completedTodos)
-    }
 
 
     const values = {
@@ -59,7 +53,8 @@ export const TodoContextProvider: React.FC<Props> = ({ children }) => {
         setTodos,
         toggleTodo,
         removeTodo,
-        filterTodos
+        filter,
+        setFilter
     }
 
     return <TodoContext.Provider value={values}>{children}</TodoContext.Provider>
