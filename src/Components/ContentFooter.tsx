@@ -28,7 +28,7 @@ const ContentFooter = () => {
                 </li>
             </ul>
 
-            <button onClick={() => setTodos([])} className="clear-completed">Clear completed</button>
+            <button className="clear-completed">Clear completed</button>
         </footer>
     )
 }
