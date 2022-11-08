@@ -2,7 +2,7 @@ import React, { useRef } from 'react'
 import { useTodo } from './Context/TodoContext'
 
 const ContentFooter = () => {
-    const { todos, filterTodos, filter, setFilter, setTodos } = useTodo();
+    const { todos, filter, setFilter, clearCompleted } = useTodo();
 
 
 
@@ -28,7 +28,7 @@ const ContentFooter = () => {
                 </li>
             </ul>
 
-            <button className="clear-completed">Clear completed</button>
+            <button onClick={() => clearCompleted(todos)} className="clear-completed">Clear completed</button>
         </footer>
     )
 }

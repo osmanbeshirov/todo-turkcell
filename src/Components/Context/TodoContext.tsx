@@ -45,6 +45,12 @@ export const TodoContextProvider: React.FC<Props> = ({ children }) => {
         setTodos(newTodos)
     }
 
+    const clearCompleted = (todos: []) => {
+        const clearedTodos = todos.filter((todo: Todo) => todo.completed === false);
+        setTodos(clearedTodos)
+        // console.log(clearedTodos)
+    }
+
 
 
     const values = {
@@ -54,7 +60,8 @@ export const TodoContextProvider: React.FC<Props> = ({ children }) => {
         toggleTodo,
         removeTodo,
         filter,
-        setFilter
+        setFilter,
+        clearCompleted
     }
 
     return <TodoContext.Provider value={values}>{children}</TodoContext.Provider>
